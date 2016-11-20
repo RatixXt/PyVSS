@@ -89,9 +89,9 @@ def get_shadows_objects():
     objWMIService = win32com.client.Dispatch("WbemScripting.SWbemLocator")
     objSWbemServices = objWMIService.ConnectServer(strComputer,"root\cimv2")
     colItems = objSWbemServices.ExecQuery("SELECT * FROM Win32_ShadowCopy")
-    ListObj = [];
+    ListObj = []
     for objItem in colItems:
-        if objItem.DeviceObject != None:
+        if objItem.DeviceObject is not None:
             ListObj.append(objItem)
     return ListObj
 
@@ -102,8 +102,11 @@ def get_shadow_paths(filepath):
     ListObj = get_shadows_objects()
     shadow_paths = []
     for Obj in ListObj:
-        if os.lstat(filepath.replace(drive_letter, Obj.DeviceObject)).st_dev == os.lstat(drive_letter).st_dev:
-            shadow_paths.append(filepath.replace(drive_letter, Obj.DeviceObject))
+        try:
+            if os.lstat(filepath.replace(drive_letter, Obj.DeviceObject)).st_dev == os.lstat(drive_letter).st_dev:
+                shadow_paths.append(filepath.replace(drive_letter, Obj.DeviceObject))
+        except FileNotFoundError:
+            pass
     return shadow_paths
 
 
