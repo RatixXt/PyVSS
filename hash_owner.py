@@ -4,7 +4,9 @@ import vss_functions
 
 
 def argument_parsing():
-    parser = argparse.ArgumentParser(description=u'Great Description To Be Here')
+    parser = argparse.ArgumentParser(description=u'hash_owner v0.010 - exploit for copying SYSTEM and SAM files '
+                                                 u'from Shadow Copy',
+                                     epilog='made by Alexey Shcherbakov, 2016')
 
     parser.add_argument(action='store',
                         type=str,
