@@ -4,7 +4,9 @@ import argparse
 
 
 def argument_parsing():
-    parser = argparse.ArgumentParser(description=u'Great Description To Be Here')
+    parser = argparse.ArgumentParser(description=u'vss_admin v0.010 - command-line tool to administer '
+                                                 u'Volume Shadow Copy Service',
+                                     epilog='made by Alexey Shcherbakov, 2016')
     parser.add_argument('--LS', '-List_shadows',
                         action='store_true',
                         dest='need_list_shadows',
