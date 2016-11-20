@@ -10,7 +10,9 @@ class OutputPathError(Exception):
 
 
 def argument_parsing():
-    parser = argparse.ArgumentParser(description=u'Great Description To Be Here')
+    parser = argparse.ArgumentParser(description=u'vss_explorer v0.010 - command-line tool to browse shadow copies '
+                                                 u'or to create symlinks to shadow copies',
+                                     epilog='made by Alexey Shcherbakov, 2016')
     parser.add_argument('--E', '-Explorer',
                         action='store_true',
                         dest='need_explorer',
@@ -85,6 +87,8 @@ if __name__ == '__main__':
 
             elif command == 'copy':
                 shadow_file, output = arg.split(' ', 1)
+                # Надо исправить разделение двух аргументов
+                # vss_functions.copy_shadow_as_file(shadow_file, output)
                 copy(shadow_file, output)
                 print('File copied.')
 
@@ -125,5 +129,4 @@ if __name__ == '__main__':
 
     else:
         print('Not enough arguments. Use --h key for help.')
-
 
