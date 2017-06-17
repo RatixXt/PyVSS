@@ -1,5 +1,6 @@
 # PyVSS
 Repository for course project about using Microsoft Volume Snapshot Service, Shadow Copy.
+<p/><b>Authors</b>: Shcherbakov Alexey, Derbina Ekaterina.
 <h2>vss_functions</h2>
 Библиотека с функциями взаимодействующими с VSS через WMI. Доступны следующие функции:
 <h3> Внешние функции </h3>
